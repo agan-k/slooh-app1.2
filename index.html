@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="style.css">
+      <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+      <title>slo͞oh.app</title>
+   </head>
+   <body>
+      <!-- piano keyboard -->
+      <div class="slooh">
+
+         <div class='felt'></div>
+
+         <!--  -->
+         <div class='keys ivory'>
+
+            <div data-key="65" class="key" id='Do' tabindex="-1">
+               <kbd>A</kbd>
+               <audio data-key="65" src="samples/09C3.mp3"></audio>
+            </div>
+            
+            <div data-key="83" class="key" id='Re' tabindex="-1">
+               <kbd>S</kbd>
+               <audio data-key="83" src="samples/11D3.mp3"></audio>
+            </div>
+            
+            <div data-key="68" class="key" id='Mi' tabindex="-1">
+               <kbd>D</kbd>
+               <audio data-key="68" src="samples/13E3.mp3"></audio>
+            </div>
+            
+            <div data-key="70" class="key" id='Fa' tabindex="-1">
+               <kbd>F</kbd>
+               <audio data-key="70" src="samples/14F3.mp3"></audio>
+            </div>
+            
+            <div data-key="71" class="key" id='So' tabindex="-1">
+               <kbd>G</kbd>
+               <audio data-key="71" src="samples/16G3.mp3"></audio>
+            </div>
+            
+            <div data-key="72" class="key" id='La' tabindex="-1">
+               <kbd>H</kbd>
+               <audio data-key="72" src="samples/18A3.mp3"></audio>
+            </div>
+            
+            <div data-key="74" class="key" id='Ti' tabindex="-1">
+               <kbd>J</kbd>
+               <audio data-key="74" src="samples/20B3.mp3"></audio>
+            </div>
+            
+            <div data-key="75" id='Do' class="key" tabindex="-1">
+               <kbd>K</kbd>
+               <audio data-key="75" src="samples/21C4.mp3"></audio>
+            </div>
+            
+            <div data-key="76" class="key" id='Re' tabindex="-1">
+               <kbd>L</kbd>
+               <audio data-key="76" src="samples/23D4.mp3"></audio>
+            </div>
+         </div>
+
+         <!-- -->
+         <div class='keys ebony'> 
+            <div data-key="87" class="key" id='Ra' tabindex="-1">
+               <kbd>W</kbd>
+               <audio data-key="87" src="samples/10Db3.mp3"></audio>
+            </div>
+            
+            <div data-key="69" class="key margin-right" id='Me' tabindex="-1">
+               <kbd>E</kbd>
+               <audio data-key="69" src="samples/12Eb3.mp3"></audio>
+            </div>
+            
+            <div data-key="84" class="key margin-left" id='Fi' tabindex="-1">
+               <kbd>T</kbd>
+               <audio data-key="84" src="samples/15Gb3.mp3"></audio>
+            </div>
+            
+            <div data-key="89" class="key" id='Le' tabindex="-1">
+               <kbd>Y</kbd>
+               <audio data-key="89" src="samples/17Ab3.mp3"></audio>
+            </div>
+            
+            <div data-key="85" class="key margin-right" id='Te' tabindex="-1">
+               <kbd>U</kbd>
+               <audio data-key="85" src="samples/19Bb3.mp3"></audio>
+            </div>
+            
+            <div data-key="79" class="key margin-left" id='Ra' tabindex="-1">
+               <kbd>O</kbd>
+               <audio data-key="79" src="samples/22Db4.mp3"></audio>
+            </div>
+
+         </div>
+
+         <div class='output'>
+            <div class='wrapper one'>
+               <div class='cont'>
+                  <h3>current</h3>
+                  <h2 id='current-note'></h2>
+               </div>
+               <div class='cont'>
+                  <h3>guess</h3>
+                  <h2 id='test-note'></h2>
+               </div>
+               <div class='cont'>
+                  <h3>true</h3>
+                  <h2 id='correct-note'></h2>
+               </div>
+               
+            </div>
+
+            <div class='wrapper two'>
+
+               <div class='cont' id='monitor'>
+                  <h1>slo͞oh</h1>
+               </div>
+
+               <div class='cont selector'>
+                     <h3>trainer</h3>
+                     <h2 id='key-of'></h2>
+                     <div id='v-line'></div>
+                     <div id='h-line'></div>
+                     <span class='controls keyof'>
+                     </span>
+                     <span class='controls transpose'>
+                        &nbsp;<button  class='button' id='toggle-transpose' 
+                        type='button' 
+                        onclick="toggleTranspose()">+</button>
+                     </span>
+                     <span class='controls chromatic'>
+                        chromatic&nbsp;<button  class='button' id='toggle-chromatic' 
+                        type='button' onclick="toggleChromatic()">-</button>
+                     </span>
+                     <span class='controls diatonic'>
+                        diatonic&nbsp;<button  class='button' id='toggle-diatonic' 
+                        type='button' onclick="toggleDiatonic()">-</button>
+                     </span>
+                     <span class='controls tendency'>
+                        tendency&nbsp;<button  class='button' id='toggle-tendency' 
+                        type='button' onclick="toggleTendency()">-</button>
+                     </span>
+                     <span class='controls on-off'>
+                        ON/OFF&nbsp;<button  class='button' id='toggle-on-off' 
+                        type='button' onclick="toggleOnOff()">-</button>
+                     </span>
+               </div>
+            </div>
+            <div class='switch-logo'>
+               <div class='logo'>
+                  <h1 id='logo'>slo͞oh</h1>
+                  <span id='cred'>&nbsp;by&nbsp;<a href='https://formversuscontent.com'>FvsC</a></span>
+               </div>
+               <div class='switch'>
+                  
+               </div>
+            </div>
+         </div>  
+      </div>
+      
+      <div class="description">
+         <h1>Hi and wellcome to slo͞oh app!</h1>
+         <p>
+            Slo͞oh is an interactive ear training tool based on 
+            <a href="https://en.wikipedia.org/wiki/Solf%C3%A8ge#Movable_do_solf%C3%A8ge" target="_blank">movable do solfège</a>. 
+            Back in the day, before apps (or smart phones for that matter), I used to practice ear training in 
+            front of the piano with a pencil in my hand. The idea was to play a reference pitch, close your eyes 
+            and press on a random key with the eraser tip. Then, with eyes still closed, I would try to determine 
+            the unknown note by establishing its relationship (distance) to the reference pitch. This worked pretty well. 
+            Another helpful approach was to practice singing tendency (sometimes referred to as leading) notes. This was 
+            also done with the piano. Play the reference and sing the tendency pairs: re-do, fa-mi, la-so ... you get the idea. 
+            I decided to make a little app based on this practice and so.. behold, slo͞oh.  I hope you find it helpful. Enjoy!</p>
+            <p>
+            P.S. <br/>
+            There really is no a single correct way to use slo͞oh. Can one poke it with a pencil? I guuueess...
+            </p>
+      </div>
+
+      <script type="module" src="main.js"></script>
+   </body>
+</html>
