@@ -1,12 +1,16 @@
-import { yellowReffNote } from './main.js'
-
+import { displaySolfege } from './display.js'
 
 let _TEST_NOTE;
+
+export const rootRefference = (input) => {
+   let refferenceNote = '65';
+   return refferenceNote == input;
+}
 
 let count = -1;
 export const playTendencyNotes = (e, input) => {
    if (!e) return count = -1;//coming from toggleTendency (off)
-   if (!yellowReffNote(input)) return;//accept only root (yellow key) input
+   if (!rootRefference(input)) return;//accept only root (yellow key) input
    
    const chromatic_scale = document.querySelectorAll('audio');
    //tendency pairs represented in chromatic scale
@@ -17,8 +21,8 @@ export const playTendencyNotes = (e, input) => {
   
    let data_key0 = chromatic_scale[tendency_pair[0]].getAttribute('data-key');
    let data_key1 = chromatic_scale[tendency_pair[1]].getAttribute('data-key');
-   let tendency1_display = document.getElementById('test-note');
-   let tendency2_display = document.getElementById('correct-note');
+   let tendency1_display = document.getElementById('display2');
+   let tendency2_display = document.getElementById('display3');
       setTimeout(function() {
          chromatic_scale[tendency_pair[0]].play()
          chromatic_scale[tendency_pair[0]].currentTime = 0;
@@ -65,7 +69,7 @@ export const  playRandomPitch = (range) => {
       _TEST_NOTE.currentTime = 0;
       _TEST_NOTE.play();
       // display CTA (question mark ?) in html element
-      document.querySelector('#test-note').innerHTML = "?"
+      document.querySelector('#display2').innerHTML = "?"
    }, 800) 
 }
 
@@ -80,18 +84,18 @@ export const evaluateGuess = (e, input) => {
    let wrong_answer;
    let guess = input;
    // +++display corresponding user input+++
-   let display_guess = document.getElementById('test-note');
+   let display2 = document.getElementById('display2');
    // pass user input (guess)
-   displaySolfege(input, display_guess )
+   displaySolfege(input, display2 )
    // compare user input with correct_note
-   let display_correct = document.getElementById('correct-note')
-   displaySolfege(input, display_correct)
+   let display3 = document.getElementById('display3')
+   displaySolfege(input, display3)
 
    //+++color user input acordingly+++
    if (guess !== test_note) {
-      document.getElementById('test-note').style.color = 'red';
+      document.getElementById('display2').style.color = 'red';
    } else {
-      document.getElementById('test-note').style.color = 'green';
+      document.getElementById('display2').style.color = 'green';
    };
 
    // these values of 'answers' only to be displayed for comparing user's input.

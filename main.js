@@ -1,4 +1,7 @@
-import { playRandomPitch, evaluateGuess, playTendencyNotes } from './trainer.js'
+import {
+   playRandomPitch, evaluateGuess, playTendencyNotes, rootRefference
+} from './trainer.js'
+import { displaySolfege, displayMonitor } from './display.js'
 import './toggleLogic.js'
 import './transposeTonality.js'
 
@@ -20,31 +23,12 @@ function inputTypeValue(e) {
 // ++++++++++++++++++++++++
 function validateInput(e, input) {
    // if (input.type )
-   let valid = _VALID_COMP_KEYS.includes(input);//true
-   invalidInputMessage(valid)//display message if invalid input
-   if (!valid) return;//exit if invalid input
-   playPiano(e, input);
-}
-
-// ++++++++++++++++++++++++++++++++++
-function invalidInputMessage(valid) {
-   let test_note = document.getElementById('test-note');
-   let correct_note = document.getElementById('correct-note');
-   test_note.innerHTML = '';
-   correct_note.innerHTML = '';
-   let monitor = document.getElementById('monitor');
-   let heading = document.createElement("H1");
-   let paragraph = document.createElement("P");
-   if (monitor.hasChildNodes()) {
-      while (monitor.firstChild) { monitor.removeChild(monitor.firstChild); }
-   }
-   if (!valid) {
-      monitor.appendChild(paragraph);
-      paragraph.innerHTML = "Invalid input. Use the assigned keys or click on the Piano keyboard."
-   }
-   else {
-      monitor.appendChild(heading);
-      heading.innerHTML = "slo͞oh"
+   if (!_VALID_COMP_KEYS.includes(input)) {
+      displayMonitor(`
+   Invalid input. Use the assigned keys or click on the Piano keyboard.`)
+   } else {
+      displayMonitor();
+      playPiano(e, input);
    }
 }
 
@@ -54,12 +38,12 @@ export const playPiano = (e, input) => {
    // user triggers second event ('guess') after blinkAll() is called and thus calls evaluateGuess(e)
    if (document.querySelector('.blink')) return evaluateGuess(e, input);
    // If refference key NOT 'Do'(C) and Tendency Mode active, exit (mute other piano keys).
-   if (!yellowReffNote(input) && document.querySelector('.slooh.tendency-mode')) return;
+   if (!rootRefference(input) && document.querySelector('.slooh.tendency-mode')) return;
    //piano sounds and keys move
    getPianoSound(input);
    pressPianoKey(e, input);
    //display current solfege
-   let current_note_display = document.getElementById('current-note')
+   let current_note_display = document.getElementById('display1')
    if (document.querySelector('.slooh.on-off')) displaySolfege(input, current_note_display);
    //go to Tendency Mode
    if (document.querySelector('.slooh.tendency-mode')) return playTendencyNotes(e, input);

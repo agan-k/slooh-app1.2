@@ -52,8 +52,8 @@ function ButtonColor(mode, button) {
 
 // ++++++++++++++++++++++++++++
 function clearDisplay(button) {
-   document.getElementById('test-note').innerHTML = '';
-   document.getElementById('correct-note').innerHTML = '';
+   document.getElementById('display2').innerHTML = '';
+   document.getElementById('display3').innerHTML = '';
    if (button.getAttribute('id') == 'toggle-tendency') {
       playTendencyNotes();
    } else {

@@ -14,12 +14,16 @@ function transposeTonality() {
 
    // display current tonality in the 'Trainer' and color them
    let current_keyOf = document.getElementById('key-of').innerHTML = keyOfArr[keyOfIndex];
+   let button = document.getElementById('transpose');
    //color transposed elements
    if (keyOfIndex !== 0) {
-      document.getElementById('transpose').style.color = 'green';//button
-      // document.getElementById('Do').style.background = 'rgb(235, 218, 132)'//piano key root
-      document.getElementById('current-note').style.color = 'rgb(235, 218, 132)';//font
-   };
+      button.style.background = 'rgb(235, 218, 132)';
+      button.style.color = 'white';
+      document.getElementById('display1').style.color = 'rgb(235, 218, 132)';
+   } else {
+      button.style.background = 'none';
+      button.style.color = 'rgb(200, 200, 200)';
+   }
 
    // ++LOAD AUDIO SAMPLES FOR NEW TE TONALITY++
    // 1. initiate new 'oneOctaveSrc' array where src's for entire octave vill be stored

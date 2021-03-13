@@ -197,33 +197,54 @@ html {
 
  }
  #monitor h1 {
+   width: 100%;
+   z-index: 1;
+   text-align: center;
+   position: absolute;
+   top: 0;
+   left: 0;
    text-align: center;
    font-size: 4rem;
    font-weight: 200;
+   text-shadow: 1px 2px 5px rgba(0, 88, 0, 0.603);
    text-shadow: 1px 2px 3px rgba(148, 147, 147, 0.493);
-   /* text-shadow: 1px 2px 5px rgba(0, 88, 0, 0.603); */
    /* color: rgba(9, 126, 9, 0.63); */
    color: rgb(240, 240, 240);
    font-family: monospace;
    margin-top: 2rem;
- }
- #monitor h3 {
+}
+/* #monitor h3 {
     text-align: left;
- }
+ } */
  #monitor p {
+    z-index: 99;
    font-family: monospace;
-   /* text-align: center; */
    text-shadow: none;
    margin: 3% 3%;
    color:rgb(136, 136, 136);
-   /* color:green; */
    font-size: 1rem;
    font-weight: 200;
-   /* font-style: italic; */
-   /* line-height: 1.7rem; */
    letter-spacing: .2rem;
-   /* background: rgb(41, 40, 40); */
    padding: 2rem;
+ }
+ #blinking-cursor {
+    margin-left: -.8rem;
+   height: 1rem;
+   width: .7rem;
+   background:rgb(136, 136, 136);
+   opacity: 0;
+   display: inline-block;
+   animation: blink .3s linear infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+
  }
  .logo {
     display: flex;
