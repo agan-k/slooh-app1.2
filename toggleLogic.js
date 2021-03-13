@@ -1,12 +1,10 @@
 import { slooh } from './main.js'
-import { playTendencyNotes } from './main.js';
-import { evaluateGuess } from './main.js';
+import { evaluateGuess, playTendencyNotes } from './trainer.js';
 
 
 // ++++++++++++++++++++
 function powerFlash() {
    const blinking_keys = document.querySelectorAll('.key');
-   // if (on_off == 'power-on-off') {
       function blinkBlink() {
          setTimeout(function () {
             blinking_keys.forEach(key =>
@@ -21,7 +19,6 @@ function powerFlash() {
       setTimeout(function () {
          blinking_keys.forEach(item => item.classList.remove('flash'))
       },800)
-   // }
 }
 
 
