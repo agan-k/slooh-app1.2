@@ -96,6 +96,7 @@ export const playPiano = (e, input) => {
    // If refference key NOT 'Do'(C) and Tendency Mode active, exit (mute other piano keys).
    if (!yellowReffNote(input) && document.querySelector('.slooh.tendency-mode')) return;
    //piano sounds and keys move
+   alert('clickenzi')
    getPianoSound(input);
    // console.log(input)
    // debugger
@@ -104,7 +105,7 @@ export const playPiano = (e, input) => {
    let current_note_display = document.getElementById('current-note')
    if (document.querySelector('.slooh.on-off')) displaySolfege(input, current_note_display);
    //go to Tendency Mode
-   if (document.querySelector('.slooh.tendency-mode')) return playTendencyNotes(e,input);
+   if (document.querySelector('.slooh.tendency-mode')) return playTendencyNotes(e, input);
    // if chromatic mode not active, exit function
    if (!document.querySelector('.chromatic-mode') && !document.querySelector('.diatonic-mode')) return;
    let range = setRange(); //range is set by either diatonic or chromatic toggle
@@ -205,7 +206,7 @@ let count = -1;
 // ++++++++++++++++++++++++++++
 export const playTendencyNotes = (e, input) => {
    if (!e) return count = -1;//coming from toggleTendency (off)
-   if (!yellowReffNote(e)) return;//accept only root (yellow key) input
+   if (!yellowReffNote(input)) return;//accept only root (yellow key) input
    
    const chromatic_scale = document.querySelectorAll('audio');
    //tendency pairs represented in chromatic scale
@@ -236,13 +237,17 @@ export const playTendencyNotes = (e, input) => {
       }, 700);
 }
 
-function yellowReffNote(e) {
+// function yellowReffNote(input) {
+//    let refferenceNote = '65';
+//    if (e.type == 'keydown') {
+//       return e.keyCode.toString() == refferenceNote;
+//    } else if (e.type == 'click') {
+//       return e.target.getAttribute('data-key') == refferenceNote;
+//    }
+// }
+function yellowReffNote(input) {
    let refferenceNote = '65';
-   if (e.type == 'keydown') {
-      return e.keyCode.toString() == refferenceNote;
-   } else if (e.type == 'click') {
-      return e.target.getAttribute('data-key') == refferenceNote;
-   }
+   return refferenceNote == input;
 }
 
 // // ++++++++++++++++++++++++++++++++++
