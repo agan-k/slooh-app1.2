@@ -1,5 +1,4 @@
 import './toggleLogic.js'
-// const pianoSound = document.querySelector(`audio[data-key="${inputTypeValue(e)}"]`);
 let _TEST_NOTE;
 export const slooh = document.querySelector('.slooh');
 const _VALID_COMP_KEYS = ["65", "83", "68", "70", "71", "72", "74", "75", "76", "87", "69", "84", "89", "85", "79"]
@@ -90,16 +89,13 @@ function invalidInputMessage(valid) {
 // }
 // ++++++++++++++++++++++++++++++
 export const playPiano = (e, input) => {
-   if (!input) return; // exit any of the trainer modes but keep power on;
+   if (!e) return; // exit any of the trainer modes but keep power on;
    // user triggers second event ('guess') after blinkAll() is called and thus calls evaluateGuess(e)
    if (document.querySelector('.blink')) return evaluateGuess(input);
    // If refference key NOT 'Do'(C) and Tendency Mode active, exit (mute other piano keys).
    if (!yellowReffNote(input) && document.querySelector('.slooh.tendency-mode')) return;
    //piano sounds and keys move
-   alert('clickenzi')
    getPianoSound(input);
-   // console.log(input)
-   // debugger
    pressPianoKey(e, input);
    //display current solfege
    let current_note_display = document.getElementById('current-note')
@@ -164,7 +160,6 @@ function pressPianoKey(e, input) {
       }, 100);
    }
 }
-
 
 // // +++++++++++++++++++++++++++
 // let count = -1;

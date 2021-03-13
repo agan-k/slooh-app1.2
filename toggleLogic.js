@@ -132,6 +132,8 @@ const buttons = [];
 function ButtonColor(mode, button) {
    buttons.push(button);
    if (buttons.length > 2) buttons.shift();
+   let previousButton = buttons[0];
+   console.log(buttons)
    let toggleOff = 'slooh on-off';
    if (buttons.length > 1) {
       previousButton.style.color = 'rgb(200, 200, 200)';
@@ -142,7 +144,6 @@ function ButtonColor(mode, button) {
    } else {
       button.style.color = 'rgb(200, 200, 200)';
       clearDisplay(button);
-      alert('hi')
    };
 }
 
