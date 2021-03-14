@@ -19,30 +19,35 @@ export const playTendencyNotes = (e, input) => {
    if (count == tendency_list.length) count = 0;
    let tendency_pair = tendency_list[count];
   
-   let data_key0 = chromatic_scale[tendency_pair[0]].getAttribute('data-key');
-   let data_key1 = chromatic_scale[tendency_pair[1]].getAttribute('data-key');
-   let tendency1_display = document.getElementById('display2');
-   let tendency2_display = document.getElementById('display3');
+   let tendency_note0_id = chromatic_scale[tendency_pair[0]].getAttribute('data-key');
+   let tendency_note1_id = chromatic_scale[tendency_pair[1]].getAttribute('data-key');
+   // console.log(tendency_note0_id)
+   // debugger
+   // let tendency1_display = document.getElementById('display2');
+   // let tendency2_display = document.getElementById('display3');
       setTimeout(function() {
          chromatic_scale[tendency_pair[0]].play()
          chromatic_scale[tendency_pair[0]].currentTime = 0;
          //display tendency pair
-         tendency1_display.innerHTML = document.
-            querySelector(`.key[data-key='${data_key0}']`).getAttribute('id');
-         tendency1_display.style.color = 'rgb(231, 100, 100)'
+         displaySolfege(tendency_note0_id, 'display2');
+         // tendency1_display.innerHTML = document.
+         //    querySelector(`.key[data-key='${data_key0}']`).getAttribute('id');
+         // tendency1_display.style.color = 'rgb(231, 100, 100)'
          setTimeout(function () {
             //display tendency pair
-            tendency2_display.innerHTML = document.
-               querySelector(`.key[data-key='${data_key1}']`).getAttribute('id');
-            tendency2_display.style.color = 'rgb(163, 231, 240)'
+            // tendency2_display.innerHTML = document.
+            //    querySelector(`.key[data-key='${data_key1}']`).getAttribute('id');
+            // tendency2_display.style.color = 'rgb(163, 231, 240)'
             chromatic_scale[tendency_pair[1]].play()
             chromatic_scale[tendency_pair[1]].currentTime = 0;
+            displaySolfege(tendency_note1_id, 'display3');
          }, 700);
       }, 700);
 }
 
 
-export const  playRandomPitch = (range) => {
+export const playRandomPitch = (range) => {
+   
    // random index to pick random note
    let random_index = Math.floor(Math.random() * Math.floor(range));
    if (random_index == 0) random_index = 1; //avoid unison
@@ -68,13 +73,14 @@ export const  playRandomPitch = (range) => {
    setTimeout(function () {
       _TEST_NOTE.currentTime = 0;
       _TEST_NOTE.play();
-      // display CTA (question mark ?) in html element
-      document.querySelector('#display2').innerHTML = "?"
+      // display CTA ('?') in html element
+      displaySolfege('?', 'display2')
    }, 800) 
 }
 
 
 export const evaluateGuess = (e, input) => {
+
    //remove highlight from piano keys
    const blinking_keys = document.querySelectorAll('.blink');
    const stop_blink = blinking_keys.forEach(item => item.classList.remove('blink'));

@@ -1,18 +1,18 @@
-import { slooh } from './main.js'
+import { slooh } from './index.js'
 import { evaluateGuess, playTendencyNotes } from './trainer.js';
 
 
 // ++++++++++++++++++++
 function powerFlash() {
    const blinking_keys = document.querySelectorAll('.key');
-   const monitor = document.getElementById('monitor');
-   const buttons = document.querySelectorAll('.button')
+   const display = document.querySelector('.output');
+   const buttons = document.querySelectorAll('.button');
 
       function blinkBlink() {
          setTimeout(function () {
             blinking_keys.forEach(key =>
                key.classList.toggle('flash'));
-            monitor.querySelector('h1').classList.toggle('flash');
+            display.classList.toggle('flash');
             buttons.forEach(button => button.classList.toggle('flash'));
          }, 50);
       }
@@ -23,12 +23,12 @@ function powerFlash() {
       }, 230);
       
       blinking_keys.forEach(item => item.classList.add('flash'));
-      monitor.querySelector('h1').classList.add('flash');
+      display.classList.add('flash');
       buttons.forEach(button => button.classList.add('flash'));
       
       setTimeout(function () {
          blinking_keys.forEach(item => item.classList.remove('flash'))
-         monitor.querySelector('h1').classList.remove('flash');
+         display.classList.remove('flash');
          buttons.forEach(button => button.classList.remove('flash'));
       },800)
 }

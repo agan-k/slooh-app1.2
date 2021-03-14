@@ -1,14 +1,20 @@
 
-export const displaySolfege = (input, id) => {
-   let display = document.getElementById(id);
-   let src = document.querySelector(`.key[data-key='${input}']`).getAttribute('id');
-   display.innerHTML = src;
+export const displaySolfege = (string, display) => {
+   let current_display = document.getElementById(display);
+   if (string == '?') {
+      string = '?';
+   } else if (string !== isNaN()) {
+      string = document.querySelector(`.key[data-key='${string}']`).getAttribute('id');
+   }
+   current_display.innerHTML = string;
+
+   if (display == 'display2') current_display.style.color = 'rgb(231, 100, 100)';
+   if (display == 'display3') current_display.style.color = 'rgb(163, 231, 240)';
 }
 
 export const displayMonitor = (print) => {
    let monitor = document.getElementById('monitor');
    let heading = document.createElement('h1');
-   
    let paragraph = document.createElement('p');
    paragraph.setAttribute('id', 'prompt');
    let blinking_cursor = document.createElement('span');

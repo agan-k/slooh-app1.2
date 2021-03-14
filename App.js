@@ -1,49 +1,9 @@
 import {
    playRandomPitch, evaluateGuess, playTendencyNotes, rootRefference
 } from './trainer.js'
-import { displaySolfege, displayMonitor } from './display.js'
-import './toggleLogic.js'
-import './transposeTonality.js'
+import { displaySolfege } from './display.js'
 
-export const slooh = document.querySelector('.slooh');
-const _VALID_COMP_KEYS = ["65", "83", "68", "70", "71", "72", "74", "75", "76", "87", "69", "84", "89", "85", "79"]
-
-function openInfo() {
-   document.getElementById('description-container').classList.add('open');
-}
-let openInfoButton = document.getElementById('info');
-openInfoButton.onclick = openInfo;
-function closeInfo() {
-   document.getElementById('description-container').classList.remove('open');
-}
-let closeInfoButton = document.getElementById('description-container');
-closeInfoButton.onclick = closeInfo;
-
-// +++++++++++++++++++++++++
-function inputTypeValue(e) {
-   if (e.repeat) return; //stop e 'keydown' from continuous fireing
-   let input;
-   if (e.type == 'keydown') {
-      input = e.keyCode.toString();
-   } else if (e.type == 'click') {
-      input = e.target.getAttribute('data-key');
-   }
-   return validateInput(e, input);
-}
-
-// ++++++++++++++++++++++++
-function validateInput(e, input) {
-   // if (input.type )
-   if (!_VALID_COMP_KEYS.includes(input)) {
-      displayMonitor(`
-   Invalid input. Use the assigned keys or click on the Piano keyboard.`)
-   } else {
-      displayMonitor();
-      playPiano(e, input);
-   }
-}
-
-// ++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++
 export const playPiano = (e, input) => {
    if (!e) return; // exit any of the trainer modes but keep power on;
    // user triggers second event ('guess') after blinkAll() is called and thus calls evaluateGuess(e)
@@ -64,7 +24,7 @@ export const playPiano = (e, input) => {
    lightAllKeys();
 }
 
-// ++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++
 function getPianoSound(input) {
    let pianoSound = document.querySelector(`audio[data-key="${input}"]`);
    if (!pianoSound) return; // ignore comp keys without audio
@@ -72,7 +32,7 @@ function getPianoSound(input) {
    pianoSound.play();   
 }
 
-// ++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++
 function pressPianoKey(e, input) {
    let pianoKey = document.querySelector(`.key[data-key="${input}"]`)
    // hold piano keys down util release
@@ -104,7 +64,7 @@ function setRange() {
    return range;
 }
 
-// ++++++++++++++++++
+// ++++++++++++++++++++++
 function lightAllKeys() {
    const blinking_keys = document.querySelectorAll('.key');
       setTimeout(function() {
@@ -112,21 +72,16 @@ function lightAllKeys() {
       }, 800)
 }
 
+// ++++++++++++++++++
+function openInfo() {
+   document.getElementById('description-container').classList.add('open');
+}
+let openInfoButton = document.getElementById('info');
+openInfoButton.onclick = openInfo;
 
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// for unwanted clicks outside of piano keyboard
-window.addEventListener('click', function () {
-   pianoKeys.forEach(item => item.focus());
-})
-
-const pianoKeys = document.querySelectorAll('.key');
-// pianoKeys.forEach(item => item.addEventListener('click', playPiano));
-pianoKeys.forEach(item => item.addEventListener('click', inputTypeValue));
-pianoKeys.forEach(item => item.focus());
-// pianoKeys.forEach(item => item.addEventListener('keydown', validateInput));
-pianoKeys.forEach(item => item.addEventListener('keydown', inputTypeValue));
-
-
-
-
+// +++++++++++++++++++
+function closeInfo() {
+   document.getElementById('description-container').classList.remove('open');
+}
+let closeInfoButton = document.getElementById('description-container');
+closeInfoButton.onclick = closeInfo;
