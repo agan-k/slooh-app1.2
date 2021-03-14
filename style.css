@@ -206,12 +206,16 @@ html {
    text-align: center;
    font-size: 4rem;
    font-weight: 200;
-   text-shadow: 1px 2px 5px rgba(0, 88, 0, 0.603);
+   /* text-shadow: 1px 2px 5px rgba(0, 88, 0, 0.603); */
    text-shadow: 1px 2px 3px rgba(148, 147, 147, 0.493);
    /* color: rgba(9, 126, 9, 0.63); */
    color: rgb(240, 240, 240);
    font-family: monospace;
    margin-top: 2rem;
+}
+#monitor h1.flash {
+   text-shadow: 1px 2px 5px rgba(255, 0, 0, 0.452);
+
 }
 /* #monitor h3 {
     text-align: left;
@@ -371,103 +375,88 @@ button {
    border-radius: 2px;
    cursor: pointer;
 }
+.button.flash {
+   color: rgba(255, 0, 0, 0.466);
+}
 .transpose button {
    font-weight: 100;
    padding: .1rem .6rem;
 }
-.switch-logo {
+.logo-info {
    width: 92%;
    margin: 0 auto;
    display: flex;
    justify-content: space-between;
-}
-.switch-logo .switch {
    color: rgb(218, 218, 218);
-   text-shadow: 1px 1px 2px grey;
-
-   height: min-content;
-   margin: .5rem .2rem;
+   text-shadow: 1px 1px 1px rgb(139, 139, 139);
 }
+
 .logo #logo {
    width: min-content;
    display: inline;
-   text-shadow: 1px 1px 1px rgb(139, 139, 139);
-   /* letter-spacing: .6rem; */
    font-family: monospace;
    text-align: right;
-   color: rgb(218, 218, 218);
    margin: 0;
    font-size: 2rem;
    font-weight: 900;
   }
-
-  .description {
-     width: 60%;
-     /* height: 100%; */
-     margin: 4rem auto;
-     color: grey;
-     font-size: 1.5rem;
-     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-     line-height: 2rem;
-     padding-bottom: 5rem;
-
+  .info {
+     padding-top: .4rem;
+  }
+  .info span {
+     font-size: 2.2rem;
+     vertical-align:baseline;
+     font-style: italic;
+     opacity: .5;
+     cursor: pointer;
+     margin-top: .3em;
+  }
+  .info span:hover {
+     opacity: 1;
   }
 
-/* ++++++++++++++++++++ */
-
-/* .key {
-   position: relative;
-   outline: none;
-} */
-
-/* .keys .blink {
-   border: .2rem solid rgba(0, 217, 255, 0.726);
-
-   animation: blink-animation .5s steps(2, start) infinite;
-   -webkit-animation: blink-animation .5s steps(2, start) infinite;
- } */
-
- /* @keyframes blink-animation {
-   to {
-      border: .2rem solid rgb(0, 255, 200, 0.205);
-   }
- }
- @-webkit-keyframes blink-animation {
-   to {
-     border: .2rem solid rgb(91, 102, 100, 0.205);
-   }
- } */
-/* .key span {
-   opacity: 0;
-   transition: none;
+  #description-container {
+     display: none;
+  }
+  #description-container.open {
+     display: initial;
+     position: absolute;
+     top: 0;
+     right: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.274);
+     z-index: 999;
+  }
+  
+#description {
+   width: 40%;
+   margin: 4rem auto;
+   color: grey;
+   font-size: 1.5rem;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   line-height: 2rem;
+   background-color: white;
+   border-radius: 1rem;
+   padding: 2rem 2rem 4rem 2rem;
+   text-align: justify;
 }
-.key.blink span {
-   display: initial;
-   position: absolute;
-   width: 100%;
-   height: 30%;
-   border-radius: 10%;
-   opacity: 1;
-   bottom: 0rem;
-   right: 0rem;
-   font-size: 2rem;
-   color: white;
-   background: blue;
-   text-shadow: none;
-   transition: none;
-   z-index: 99;
 
-   animation: blink-animation .5s steps(5, start) infinite;
-   -webkit-animation: blink-animation .5s steps(5, start) infinite;
- }
+#description a {
+   color: rgb(67, 157, 241);
+   text-decoration: none;
+   transition: .3s;
+}
+#description a:hover {
+   color: rgb(0, 132, 255);
+}
 
- @keyframes blink-animation {
-   to {
-      opacity: .6;
-   }
- }
- @-webkit-keyframes blink-animation {
-   to {
-     opacity: .6;
-   }
- } */
+#description span {
+   font-size: 3rem;
+   font-weight: 200;
+   display: block;
+   text-align: right;
+   cursor: pointer;
+   opacity: .6;
+   
+  }

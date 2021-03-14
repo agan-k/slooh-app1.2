@@ -115,7 +115,7 @@
             <div class='wrapper two'>
 
                <div class='cont' id='monitor'>
-                  <h1 id='monitor-heading'>slo͞oh</h1>
+                  <h1>slo͞oh</h1>
                   <p id='prompt'></p>
                </div>
 
@@ -149,34 +149,37 @@
                      </span>
                </div>
             </div>
-            <div class='switch-logo'>
+            <div class='logo-info'>
                <div class='logo'>
                   <h1 id='logo'>slo͞oh</h1>
                   <span id='cred'>&nbsp;by&nbsp;<a href='https://formversuscontent.com'>FvsC</a></span>
                </div>
-               <div class='switch'>
-                  
+               <div class='info'>
+                  <span id='info' onclick='openInfo()'>&#x2139;</span>
                </div>
             </div>
          </div>  
       </div>
       
-      <div class="description">
-         <h1>Hi and wellcome to slo͞oh app!</h1>
-         <p>
-            Slo͞oh is an interactive ear training tool based on 
-            <a href="https://en.wikipedia.org/wiki/Solf%C3%A8ge#Movable_do_solf%C3%A8ge" target="_blank">movable do solfège</a>. 
-            Back in the day, before apps (or smart phones for that matter), I used to practice ear training in 
-            front of the piano with a pencil in my hand. The idea was to play a reference pitch, close your eyes 
-            and press on a random key with the eraser tip. Then, with eyes still closed, I would try to determine 
-            the unknown note by establishing its relationship (distance) to the reference pitch. This worked pretty well. 
-            Another helpful approach was to practice singing tendency (sometimes referred to as leading) notes. This was 
-            also done with the piano. Play the reference and sing the tendency pairs: re-do, fa-mi, la-so ... you get the idea. 
-            I decided to make a little app based on this practice and so.. behold, slo͞oh.  I hope you find it helpful. Enjoy!</p>
+      <div id="description-container" onclick="closeInfo()">
+         <div id="description" >
+            <span>&times;</span>
+            <h1>Hi and wellcome to slo͞oh app!</h1>
             <p>
-            P.S. <br/>
-            There really is no a single correct way to use slo͞oh. Can one poke it with a pencil? I guuueess...
-            </p>
+               <strong>slo͞oh</strong> is an interactive ear training tool based on 
+               <a href="https://en.wikipedia.org/wiki/Solf%C3%A8ge#Movable_do_solf%C3%A8ge" target="_blank">movable do solfège</a>. 
+               Back in the day, before apps (or smart phones for that matter), I used to practice ear training in 
+               front of the piano with a pencil in my hand. The idea was to play a reference pitch, close your eyes 
+               and press on a random key with the eraser tip. Then, with eyes still closed, I would try to determine 
+               the unknown note by establishing its relationship (distance) to the reference pitch. This worked pretty well. 
+               Another helpful approach was to practice singing tendency (sometimes referred to as leading) notes. This was 
+               also done with the piano. Play the reference and sing the tendency pairs: re-do, fa-mi, la-so ... you get the idea. 
+               I decided to make a little app based on this practice and so.. behold, slo͞oh.  I hope you find it helpful. Enjoy!</p>
+               <p>
+               P.S. <br/>
+               There really is no a single correct way to use slo͞oh. Can one poke it with a pencil? I guuueess...
+               </p>
+         </div>
       </div>
 
       <script type="module" src="main.js"></script>

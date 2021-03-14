@@ -1,4 +1,4 @@
-import { displaySolfege } from './display.js'
+import { displayMonitor, displaySolfege } from './display.js'
 
 let _TEST_NOTE;
 
@@ -84,12 +84,10 @@ export const evaluateGuess = (e, input) => {
    let wrong_answer;
    let guess = input;
    // +++display corresponding user input+++
-   let display2 = document.getElementById('display2');
    // pass user input (guess)
-   displaySolfege(input, display2 )
+   displaySolfege(input, 'display2' )
    // compare user input with correct_note
-   let display3 = document.getElementById('display3')
-   displaySolfege(input, display3)
+   displaySolfege(input, 'display3')
 
    //+++color user input acordingly+++
    if (guess !== test_note) {
@@ -98,25 +96,16 @@ export const evaluateGuess = (e, input) => {
       document.getElementById('display2').style.color = 'green';
    };
 
+   // RESULT OUTPUT
    // these values of 'answers' only to be displayed for comparing user's input.
    correct_answer = document.
    querySelector(`.key[data-key="${test_note}"]`).getAttribute('id');
    wrong_answer = document.
    querySelector(`.key[data-key="${guess}"]`).getAttribute('id');
    
-   // RESULT OUTPUT
-   let para = document.createElement("P");
-   let monitor = document.getElementById('monitor');
-   if (monitor.hasChildNodes()) {
-      while (monitor.firstChild) {
-         monitor.removeChild(monitor.firstChild)
-      }
-   }
    if (guess == test_note) {
-      para.innerText = `Yes, it was "${correct_answer}". Nice work!`
-      monitor.appendChild(para);
-   } else if (guess !== test_note) {
-      para.innerText = `You guessed "${wrong_answer}". The correct note was "${correct_answer}".`
-      monitor.appendChild(para);
+      displayMonitor(`Yes, it was "${correct_answer}". Nice work!`)
+   } else {
+      displayMonitor(`You guessed "${wrong_answer}". The correct note was "${correct_answer}".`)
    };
 }

@@ -8,6 +8,17 @@ import './transposeTonality.js'
 export const slooh = document.querySelector('.slooh');
 const _VALID_COMP_KEYS = ["65", "83", "68", "70", "71", "72", "74", "75", "76", "87", "69", "84", "89", "85", "79"]
 
+function openInfo() {
+   document.getElementById('description-container').classList.add('open');
+}
+let openInfoButton = document.getElementById('info');
+openInfoButton.onclick = openInfo;
+function closeInfo() {
+   document.getElementById('description-container').classList.remove('open');
+}
+let closeInfoButton = document.getElementById('description-container');
+closeInfoButton.onclick = closeInfo;
+
 // +++++++++++++++++++++++++
 function inputTypeValue(e) {
    if (e.repeat) return; //stop e 'keydown' from continuous fireing
@@ -43,8 +54,7 @@ export const playPiano = (e, input) => {
    getPianoSound(input);
    pressPianoKey(e, input);
    //display current solfege
-   let current_note_display = document.getElementById('display1')
-   if (document.querySelector('.slooh.on-off')) displaySolfege(input, current_note_display);
+   if (document.querySelector('.slooh.on-off')) displaySolfege(input, 'display1');
    //go to Tendency Mode
    if (document.querySelector('.slooh.tendency-mode')) return playTendencyNotes(e, input);
    // if chromatic mode not active, exit function
@@ -80,10 +90,6 @@ function pressPianoKey(e, input) {
       }, 100);
    }
 }
-
-
-
-
 
 // ++++++++++++++++++
 function setRange() {

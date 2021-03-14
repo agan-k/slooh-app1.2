@@ -5,19 +5,31 @@ import { evaluateGuess, playTendencyNotes } from './trainer.js';
 // ++++++++++++++++++++
 function powerFlash() {
    const blinking_keys = document.querySelectorAll('.key');
+   const monitor = document.getElementById('monitor');
+   const buttons = document.querySelectorAll('.button')
+
       function blinkBlink() {
          setTimeout(function () {
             blinking_keys.forEach(key =>
                key.classList.toggle('flash'));
+            monitor.querySelector('h1').classList.toggle('flash');
+            buttons.forEach(button => button.classList.toggle('flash'));
          }, 50);
       }
+      
       let blinking = setInterval(blinkBlink, 50);
       setTimeout(function () {
          clearInterval(blinking);
       }, 230);
-      blinking_keys.forEach(item => item.classList.add('flash'))
+      
+      blinking_keys.forEach(item => item.classList.add('flash'));
+      monitor.querySelector('h1').classList.add('flash');
+      buttons.forEach(button => button.classList.add('flash'));
+      
       setTimeout(function () {
          blinking_keys.forEach(item => item.classList.remove('flash'))
+         monitor.querySelector('h1').classList.remove('flash');
+         buttons.forEach(button => button.classList.remove('flash'));
       },800)
 }
 
@@ -114,7 +126,7 @@ function toggleOnOff() {
       powerFlash();
       setTimeout(function () {
          location.reload();
-      }, 600)
+      }, 1000)
    }
 }
    let toggleOnOffButton = document.getElementById('toggle-on-off');
