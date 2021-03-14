@@ -21,23 +21,12 @@ export const playTendencyNotes = (e, input) => {
   
    let tendency_note0_id = chromatic_scale[tendency_pair[0]].getAttribute('data-key');
    let tendency_note1_id = chromatic_scale[tendency_pair[1]].getAttribute('data-key');
-   // console.log(tendency_note0_id)
-   // debugger
-   // let tendency1_display = document.getElementById('display2');
-   // let tendency2_display = document.getElementById('display3');
       setTimeout(function() {
          chromatic_scale[tendency_pair[0]].play()
          chromatic_scale[tendency_pair[0]].currentTime = 0;
          //display tendency pair
          displaySolfege(tendency_note0_id, 'display2');
-         // tendency1_display.innerHTML = document.
-         //    querySelector(`.key[data-key='${data_key0}']`).getAttribute('id');
-         // tendency1_display.style.color = 'rgb(231, 100, 100)'
          setTimeout(function () {
-            //display tendency pair
-            // tendency2_display.innerHTML = document.
-            //    querySelector(`.key[data-key='${data_key1}']`).getAttribute('id');
-            // tendency2_display.style.color = 'rgb(163, 231, 240)'
             chromatic_scale[tendency_pair[1]].play()
             chromatic_scale[tendency_pair[1]].currentTime = 0;
             displaySolfege(tendency_note1_id, 'display3');
@@ -62,19 +51,19 @@ export const playRandomPitch = (range) => {
    // iterate trough chromatic scale, 
    for (let i = 0; i < 9; i++) {
       diatonic_scale.push(chromatic_scale[i]);
-   }
+   };
 
    if (range == 15) {
       _TEST_NOTE = chromatic_scale[random_index];
    } else if (range == 9) {
       _TEST_NOTE = diatonic_scale[random_index];
-   }
+   };
 
    setTimeout(function () {
       _TEST_NOTE.currentTime = 0;
       _TEST_NOTE.play();
       // display CTA ('?') in html element
-      displaySolfege('?', 'display2')
+      displaySolfege('?', 'display2');
    }, 800) 
 }
 
@@ -91,17 +80,16 @@ export const evaluateGuess = (e, input) => {
    let guess = input;
    // +++display corresponding user input+++
    // pass user input (guess)
-   displaySolfege(input, 'display2' )
+   displaySolfege(input, 'display2');
    // compare user input with correct_note
-   displaySolfege(input, 'display3')
+   displaySolfege(input, 'display3');
 
-   //+++color user input acordingly+++
+   //+++color user input acordingly and override default+++
    if (guess !== test_note) {
       document.getElementById('display2').style.color = 'red';
    } else {
       document.getElementById('display2').style.color = 'green';
    };
-
    // RESULT OUTPUT
    // these values of 'answers' only to be displayed for comparing user's input.
    correct_answer = document.
@@ -110,8 +98,8 @@ export const evaluateGuess = (e, input) => {
    querySelector(`.key[data-key="${guess}"]`).getAttribute('id');
    
    if (guess == test_note) {
-      displayMonitor(`Yes, it was "${correct_answer}". Nice work!`)
+      displayMonitor(`Yes, it was "${correct_answer}". Nice work!`);
    } else {
-      displayMonitor(`You guessed "${wrong_answer}". The correct note was "${correct_answer}".`)
+      displayMonitor(`You guessed "${wrong_answer}". The correct note was "${correct_answer}".`);
    };
 }

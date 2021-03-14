@@ -2,4 +2,4 @@
 
 Music education - [slo͞oh](https://slooh.app)
 
-![](slooh.png)
+![](images/slooh.png)

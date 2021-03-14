@@ -7,6 +7,7 @@ let keyOfArr = ['C', 'D&#9837;', 'D', 'E&#9837;', 'E', 'F', 'G&#9837;', 'G', 'A&
 
 
 function transposeTonality() {
+
    if (!document.querySelector('.slooh.on-off')) return;//exit if power off
    // trainer display corresponding tonalities   
    keyOfIndex += 1;// increase index to switch to the next tonality
@@ -15,15 +16,23 @@ function transposeTonality() {
    // display current tonality in the 'Trainer' and color them
    let current_keyOf = document.getElementById('key-of').innerHTML = keyOfArr[keyOfIndex];
    let button = document.getElementById('transpose');
-   //color transposed elements
-   if (keyOfIndex !== 0) {
-      button.style.background = 'rgb(235, 218, 132)';
-      button.style.color = 'white';
-      document.getElementById('display1').style.color = 'rgb(235, 218, 132)';
-   } else {
-      button.style.background = 'none';
-      button.style.color = 'rgb(200, 200, 200)';
-   }
+
+   (function colorTransposedElements() {
+      if (keyOfIndex !== 0) {
+         button.style.background = 'rgb(235, 218, 132)';
+         button.style.color = 'white';
+         document.getElementById('key-of').style.color = 'rgb(235, 218, 132)'
+         document.getElementById('display1').style.color = 'rgb(235, 218, 132)';
+         document.getElementById('Do').style.background = 'rgb(235, 218, 132)';
+      } else {
+         document.getElementById('key-of').style.color = 'rgb(200, 200, 200)'
+         button.style.background = 'none';
+         button.style.color = 'rgb(200, 200, 200)';
+         document.getElementById('display1').style.color = 'rgb(200, 200, 200)';
+         document.getElementById('Do').style.background = 'rgb(200, 200, 200)';
+      }
+   })();
+   
 
    // ++LOAD AUDIO SAMPLES FOR NEW TE TONALITY++
    // 1. initiate new 'oneOctaveSrc' array where src's for entire octave vill be stored

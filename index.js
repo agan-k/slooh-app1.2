@@ -1,6 +1,7 @@
 
-import './toggleLogic.js'
+import './trainerButtons.js'
 import './transposeTonality.js'
+import './info.js'
 
 import { playPiano } from './App.js'
 import { displayMonitor } from './display.js'
@@ -19,20 +20,6 @@ pianoKeys.forEach(item => item.addEventListener('click', inputTypeValue));
 pianoKeys.forEach(item => item.focus());
 pianoKeys.forEach(item => item.addEventListener('keydown', inputTypeValue));
 
-// ++++++++++++++++++
-function openInfo() {
-   document.getElementById('description-container').classList.add('open');
-}
-let openInfoButton = document.getElementById('info');
-openInfoButton.onclick = openInfo;
-
-// +++++++++++++++++++
-function closeInfo() {
-   document.getElementById('description-container').classList.remove('open');
-}
-let closeInfoButton = document.getElementById('description-container');
-closeInfoButton.onclick = closeInfo;
-
 // +++++++++++++++++++++++++
 function inputTypeValue(e) {
    if (e.repeat) return; //stop e 'keydown' from continuous fireing
@@ -47,7 +34,6 @@ function inputTypeValue(e) {
 
 // ++++++++++++++++++++++++
 function validateInput(e, input) {
-   // if (input.type )
    if (!_VALID_COMP_KEYS.includes(input)) {
       displayMonitor(`
    Invalid input. Use the assigned keys or click on the Piano keyboard.`)
