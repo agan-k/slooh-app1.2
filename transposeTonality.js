@@ -5,7 +5,6 @@ let keyOfIndex = 0;
 // list of tonalities (keyOf). the hex is for the flat (b) sign
 let keyOfArr = ['C', 'D&#9837;', 'D', 'E&#9837;', 'E', 'F', 'G&#9837;', 'G', 'A&#9837;', 'A', 'B&#9837;', 'B'];
 
-
 function transposeTonality() {
 
    if (!document.querySelector('.slooh.on-off')) return;//exit if power off
