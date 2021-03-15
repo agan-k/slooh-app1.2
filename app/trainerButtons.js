@@ -1,4 +1,4 @@
-import { slooh } from './index.js'
+import { slooh } from '../index.js'
 import { evaluateGuess, playTendencyNotes } from './trainer.js';
 
 let tendencyMode;

@@ -1,10 +1,10 @@
 
-import './trainerButtons.js'
-import './transposeTonality.js'
-import './info.js'
+import './app/trainerButtons.js'
+import './app/transposeTonality.js'
+import './app/info.js'
 
-import { playPiano } from './App.js'
-import { displayMonitor } from './display.js'
+import { playPiano } from './app/App.js'
+import { displayMonitor } from './app/display.js'
 
 export const slooh = document.querySelector('.slooh');
 const _VALID_COMP_KEYS = ["65", "83", "68", "70", "71", "72", "74", "75", "76", "87", "69", "84", "89", "85", "79"];
